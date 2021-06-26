@@ -4,49 +4,44 @@
     ViewData["Title"] = "Edit";
 }
 
-<h1>Edit</h1>
+<h1 class="subtitulo">Edit</h1>
 
-<h4>Fotografias</h4>
+<h4 class="extratitulo">Fotografias</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Edit">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div asp-validation-summary="ModelOnly" class="text-danger texto"></div>
             <input type="hidden" asp-for="ID" />
             <div class="form-group">
-                <label asp-for="Foto" class="control-label"></label>
+                <label asp-for="Foto" class="control-label texto"></label>
                 <input asp-for="Foto" class="form-control" />
                 <span asp-validation-for="Foto" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="DataFoto" class="control-label"></label>
+                <label asp-for="DataFoto" class="control-label texto"></label>
                 <input asp-for="DataFoto" class="form-control" />
                 <span asp-validation-for="DataFoto" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="LocalFoto" class="control-label"></label>
+                <label asp-for="LocalFoto" class="control-label texto"></label>
                 <input asp-for="LocalFoto" class="form-control" />
                 <span asp-validation-for="LocalFoto" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Fotografo" class="control-label"></label>
+                <label asp-for="Fotografo" class="control-label texto"></label>
                 <input asp-for="Fotografo" class="form-control" />
                 <span asp-validation-for="Fotografo" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="AutorFK" class="control-label"></label>
-                <input asp-for="AutorFK" class="form-control" />
-                <span asp-validation-for="AutorFK" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <input type="submit" value="Save" class="btn btn-primary texto" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index" class="texto">Back to List</a>
 </div>
 
 @section Scripts {

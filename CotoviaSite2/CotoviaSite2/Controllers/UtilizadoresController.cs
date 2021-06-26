@@ -60,7 +60,7 @@ namespace CotoviaSite2.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ID,Nome,Email")] Utilizadores utilizador, IFormFile Foto)
+        public async Task<IActionResult> Create([Bind("ID,Nome,Email,Cargo")] Utilizadores utilizador, IFormFile Foto)
         {
             if (Foto == null)
             {

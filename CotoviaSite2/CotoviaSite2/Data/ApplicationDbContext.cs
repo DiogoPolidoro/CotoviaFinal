@@ -20,14 +20,6 @@ namespace CotoviaSite2.Data
 
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.Entity<Utilizadores>().HasData(
-               new Utilizadores { ID = 1, Nome = "Álvaro Mendonça", Email = "a2101@cotovia.pt", Foto = "C:/Imagens/A_Mendonca_A.jpg", Cargo = (Cargo)0},
-               new Utilizadores { ID = 2, Nome = "Cátia Domingues", Email = "a2004@cotovia.pt", Foto = "C:/Imagens/C_Domingues_A.jpg", Cargo = (Cargo)0 },
-               new Utilizadores { ID = 3, Nome = "Francisco Lopes", Email = "a2003@cotovia.pt", Foto = "C:/Imagens/F_Lopes_A.jpg", Cargo = (Cargo)1 },
-               new Utilizadores { ID = 4, Nome = "Nuno Faria", Email = "a2002@cotovia.pt", Foto = "C:/Imagens/N_Faria_A.jpg", Cargo = (Cargo)0 },
-               new Utilizadores { ID = 5, Nome = "Inês Pereira", Email = "a2001@cotovia.pt", Foto = "C:/Imagens/I_Pereira_A.jpg", Cargo = (Cargo)1 }
-            );
-
             modelBuilder.Entity<Fotografias>().HasData(
                new Fotografias { ID = 1, Foto = "C:/Imagens/foto1", DataFoto = new DateTime(2021, 2, 9).Date, LocalFoto = "Tomar", Fotografo = "João Silva" },
                new Fotografias { ID = 2, Foto = "C:/Imagens/foto2", DataFoto = new DateTime(2021, 2, 9).Date, LocalFoto = "Leiria", Fotografo = "Maria dos Santos" },

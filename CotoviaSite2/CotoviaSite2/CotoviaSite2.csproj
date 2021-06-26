@@ -6,7 +6,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="Areas\Identity\Pages\Account\Register.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove=".gitignore" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="Areas\Identity\Pages\Account\Register.cshtml" />
   </ItemGroup>
 
   <ItemGroup>

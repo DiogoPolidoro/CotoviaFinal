@@ -80,7 +80,6 @@ body {
 .d {
     background-color: whitesmoke;
     text-align: center;
-    border: ridge 2px;
 }
 
 .titulo{
@@ -90,5 +89,15 @@ body {
 
 .subtitulo{
     font-size: 40px;
+    font-family: Garamond;
+}
+
+.extratitulo {
+    font-size: 30px;
+    font-family: Garamond;
+}
+
+.texto {
+    font-size: 20px;
     font-family: Garamond;
 }

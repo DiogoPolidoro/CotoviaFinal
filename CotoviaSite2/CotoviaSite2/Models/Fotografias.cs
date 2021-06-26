@@ -18,16 +18,12 @@ namespace CotoviaSite2.Models
         [Key]
         public int ID { set; get; }
         public string Foto { get; set; }
+        [Display(Name ="Data")]
         public DateTime DataFoto { get; set; }
+        [Display(Name = "Local")]
         public string LocalFoto { get; set; }
+        [Display(Name = "Fotógrafo")]
         public string Fotografo { get; set; }
-
-        
-        [ForeignKey(nameof(Autor))]
-        public int? AutorFK { get; set; }
-        [NotMapped]
-        public Utilizadores Autor { get; set; }
-
 
         public virtual ICollection<FotosNoticias> ListaNoticias { get; set; }
     }

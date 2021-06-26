@@ -24,10 +24,11 @@ namespace CotoviaSite2.Models
         public string Nome { get; set; }
 
         [Required(ErrorMessage = "O E-mail é de preenchimento obrigatório")]
-        //[RegularExpression("[a-z0-9_.+-]@[a-z]([.][a-z])+", ErrorMessage = "E-mail inválido.")]
+        [Display(Name ="E-mail")]
+        [RegularExpression("[ar][0-9]{4}@cotovia.pt", ErrorMessage = "E-mail inválido.")]
         public string Email { get; set; }
 
-        //[Required]
+        [Required]
         public string Foto { get; set; }
 
         [Required]

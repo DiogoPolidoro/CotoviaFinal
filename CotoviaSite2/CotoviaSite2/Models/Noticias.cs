@@ -26,19 +26,23 @@ namespace CotoviaSite2.Models
         public DateTime Data { get; set; }
 
         [Required(ErrorMessage = "É necessário um título para a notícia")]
+        [Display(Name = "Título")]
         public string Titulo { get; set; }
 
         [Required]
         public string Resumo { get; set; }
 
         [Required]
+        [Display(Name = "Resumo")]
         public string Conteudo { get; set; }
+
+        [Required]
+        public Tema Tema { get; set; }
 
         [Required]
         public Estado Estado { get; set; }
 
-        [Required]
-        public Tema Tema { get; set; }
+
 
         public virtual ICollection<FotosNoticias> ListaFotografias { get; set; }
 
