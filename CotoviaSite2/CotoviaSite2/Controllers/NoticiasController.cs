@@ -22,7 +22,7 @@ namespace CotoviaSite2.Controllers
         // GET: Noticias
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Noticias.ToListAsync());
+            return View(await _context.Noticias.Include(m => m.ListaFotografias).ToListAsync());
         }
 
         // GET: Noticias/Details/5

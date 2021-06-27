@@ -61,5 +61,6 @@ namespace CotoviaSite2.Data
         public DbSet<CotoviaSite2.Models.Noticias> Noticias { get; set; }
         public DbSet<CotoviaSite2.Models.Fotografias> Fotografias { get; set; }
         public DbSet<CotoviaSite2.Models.Utilizadores> Utilizadores { get; set; }
+        public DbSet<FotosNoticias> FotosNoticias { get; set; }
     }
 }
