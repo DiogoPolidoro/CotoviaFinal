@@ -42,10 +42,7 @@ namespace CotoviaSite2.Models
         [Required]
         public Estado Estado { get; set; }
 
-
-
         public virtual ICollection<FotosNoticias> ListaFotografias { get; set; }
-
         
         [ForeignKey(nameof(Autor))]
         public int AutorFK { get; set; }
