@@ -26,6 +26,9 @@ namespace CotoviaSite2.Data.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int?>("AutorFK")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("DataFoto")
                         .HasColumnType("datetime2");
 
@@ -370,7 +373,6 @@ namespace CotoviaSite2.Data.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Foto")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Nome")
