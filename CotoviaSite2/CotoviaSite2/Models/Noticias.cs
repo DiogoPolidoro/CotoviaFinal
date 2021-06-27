@@ -33,7 +33,7 @@ namespace CotoviaSite2.Models
         public string Resumo { get; set; }
 
         [Required]
-        [Display(Name = "Resumo")]
+        [Display(Name = "Conteúdo")]
         public string Conteudo { get; set; }
 
         [Required]
