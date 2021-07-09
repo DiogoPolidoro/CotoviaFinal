@@ -25,12 +25,10 @@ namespace CotoviaSite2.Models
            ErrorMessage = "Só são aceites letras. Cada palavra deve começar por uma maiúscula, separadas por um espaço em branco.")]
         public string Nome { get; set; }
 
-        [Required(ErrorMessage = "O E-mail é de preenchimento obrigatório")]
         [Display(Name ="E-mail")]
         [RegularExpression("[ar][0-9]{4}@cotovia.pt", ErrorMessage = "E-mail inválido.")]
         public string Email { get; set; }
 
-        [Required]
         public string Foto { get; set; }
 
         [Required]

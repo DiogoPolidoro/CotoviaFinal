@@ -6,7 +6,7 @@
 
 <h2>@ViewData["Title"]</h2>
 
-<form asp-route-returnUrl="@Model.ReturnUrl" method="post">
+<form asp-route-returnUrl="@Model.ReturnUrl" method="post" enctype="multipart/form-data">
     <div class="row">
         <div class="col-md-12">
             <div asp-validation-summary="All" class="text-danger"></div>
@@ -19,9 +19,9 @@
                     <span asp-validation-for="Input.Utilizador.Nome" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <label asp-for="Input.Utilizador.Foto" class="control-label texto"></label>
-                    <input type="file" name="Input.Utilizador.Foto" accept=".jpg,.png" style="color:blue;" />
-                    <span asp-validation-for="Input.Utilizador.Foto" class="text-danger"></span>
+                    <label asp-for="Input.Foto" class="control-label texto"></label>
+                    <input type="file" name="Input.Foto" accept=".jpg,.png" style="color:blue;" />
+                    <span asp-validation-for="Input.Foto" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     <label asp-for="Input.Utilizador.Cargo" class="control-label texto"></label>

@@ -6,6 +6,7 @@ using System.Text;
 using System.Text.Encodings.Web;
 using System.Threading.Tasks;
 using CotoviaSite2.Models;
+using CotoviaSite2.Data;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -14,27 +15,34 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Logging;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Hosting;
+using System.IO;
 
 namespace CotoviaSite2.Areas.Identity.Pages.Account
 {
     [AllowAnonymous]
     public class RegisterModel : PageModel
     {
-        private readonly SignInManager<IdentityUser> _signInManager;
-        private readonly UserManager<IdentityUser> _userManager;
+        private readonly SignInManager<ApplicationUser> _signInManager;
+        private readonly UserManager<ApplicationUser> _userManager;
         private readonly ILogger<RegisterModel> _logger;
-        private readonly IEmailSender _emailSender;
+        private readonly ApplicationDbContext _context;
+        private readonly IWebHostEnvironment _path;
 
         public RegisterModel(
-            UserManager<IdentityUser> userManager,
-            SignInManager<IdentityUser> signInManager,
+            UserManager<ApplicationUser> userManager,
+            SignInManager<ApplicationUser> signInManager,
             ILogger<RegisterModel> logger,
-            IEmailSender emailSender)
+            ApplicationDbContext context,
+            IWebHostEnvironment path
+            )
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _logger = logger;
-            _emailSender = emailSender;
+            _context = context;
+            _path = path;
         }
 
         [BindProperty]
@@ -65,13 +73,8 @@ namespace CotoviaSite2.Areas.Identity.Pages.Account
 
             public Utilizadores Utilizador { get; set; }
 
+            public IFormFile Foto { get; set; }
  
-        }
-
-        public enum Cargo
-        {
-            Autor,
-            Revisor
         }
 
         public async Task OnGetAsync(string returnUrl = null)
@@ -85,15 +88,46 @@ namespace CotoviaSite2.Areas.Identity.Pages.Account
             returnUrl ??= Url.Content("~/");
             if (ModelState.IsValid)
             {
-                var user = new IdentityUser { UserName = Input.Email, Email = Input.Email };
+                var user = new ApplicationUser { UserName = Input.Email, Email = Input.Email, Nome = Input.Utilizador.Nome};
                 var result = await _userManager.CreateAsync(user, Input.Password);
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User created a new account with password.");
 
-                    
+                    try
+                    {
+                        Guid g;
+                        g = Guid.NewGuid();
 
-                    if (_userManager.Options.SignIn.RequireConfirmedAccount)
+                        string extension = Path.GetExtension(Input.Foto.FileName).ToLower();
+
+                        string nameOfFile = "" + g.ToString() + extension;
+
+                        Utilizadores novoUtilizador = new Utilizadores
+                        {
+                            Nome = Input.Utilizador.Nome,
+                            Email = Input.Email,
+                            UserID = user.Id,
+                            Cargo = Input.Utilizador.Cargo
+                        
+                        };
+
+                        novoUtilizador.Foto = nameOfFile;
+                        string whereToStoreTheFile = _path.WebRootPath;
+                        nameOfFile = Path.Combine(whereToStoreTheFile, "fotos", nameOfFile);
+
+                        using var stream = new FileStream(nameOfFile, FileMode.Create);
+                        await Input.Foto.CopyToAsync(stream);
+
+                        _context.Add(novoUtilizador);
+                        await _context.SaveChangesAsync();
+                    }
+                    catch (Exception)
+                    {
+                        await _userManager.DeleteAsync(user);
+                    }
+
+                        if (_userManager.Options.SignIn.RequireConfirmedAccount)
                     {
                         return RedirectToPage("RegisterConfirmation", new { email = Input.Email, returnUrl = returnUrl });
                     }

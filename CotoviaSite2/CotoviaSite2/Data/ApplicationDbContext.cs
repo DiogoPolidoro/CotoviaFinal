@@ -2,11 +2,14 @@
 using Microsoft.EntityFrameworkCore;
 using System;
 using CotoviaSite2.Models;
-
+using Microsoft.AspNetCore.Identity;
 
 namespace CotoviaSite2.Data
 {
-    public class ApplicationDbContext : IdentityDbContext
+    public class ApplicationUser : IdentityUser { 
+        public string Nome { get; set; }
+    }
+    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
