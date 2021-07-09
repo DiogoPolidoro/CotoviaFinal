@@ -33,7 +33,7 @@ namespace CotoviaSite2.Models
         public string Resumo { get; set; }
 
         [Required]
-        [Display(Name = "Resumo")]
+        [Display(Name = "Conteúdo")]
         public string Conteudo { get; set; }
 
         [Required]
@@ -46,20 +46,19 @@ namespace CotoviaSite2.Models
         
         [ForeignKey(nameof(Autor))]
         public int AutorFK { get; set; }
-        [NotMapped]
         public virtual Utilizadores Autor { get; set; }
 
         
         [ForeignKey(nameof(Revisor))]
         public int RevisorFK { get; set; }
-        [NotMapped]
         public virtual Utilizadores Revisor { get; set; }
     }
 
     public enum Estado
     {
         Pendente,
-        Publicada
+        Publicada,
+        Recusado
     }
     public enum Tema
     {

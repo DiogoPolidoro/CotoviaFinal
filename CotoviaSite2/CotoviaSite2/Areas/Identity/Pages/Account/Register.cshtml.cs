@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Text.Encodings.Web;
 using System.Threading.Tasks;
+using CotoviaSite2.Models;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -45,9 +46,10 @@ namespace CotoviaSite2.Areas.Identity.Pages.Account
 
         public class InputModel
         {
-            [Required]
+            [Required(ErrorMessage = "O E-mail é de preenchimento obrigatório")]
             [EmailAddress]
             [Display(Name = "Email")]
+            [RegularExpression("[ar][0-9]{4}@cotovia.pt", ErrorMessage = "E-mail inválido.")]
             public string Email { get; set; }
 
             [Required]
@@ -60,6 +62,16 @@ namespace CotoviaSite2.Areas.Identity.Pages.Account
             [Display(Name = "Confirm password")]
             [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
             public string ConfirmPassword { get; set; }
+
+            public Utilizadores Utilizador { get; set; }
+
+ 
+        }
+
+        public enum Cargo
+        {
+            Autor,
+            Revisor
         }
 
         public async Task OnGetAsync(string returnUrl = null)
@@ -71,7 +83,6 @@ namespace CotoviaSite2.Areas.Identity.Pages.Account
         public async Task<IActionResult> OnPostAsync(string returnUrl = null)
         {
             returnUrl ??= Url.Content("~/");
-            ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
             if (ModelState.IsValid)
             {
                 var user = new IdentityUser { UserName = Input.Email, Email = Input.Email };
@@ -80,16 +91,7 @@ namespace CotoviaSite2.Areas.Identity.Pages.Account
                 {
                     _logger.LogInformation("User created a new account with password.");
 
-                    var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
-                    code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
-                    var callbackUrl = Url.Page(
-                        "/Account/ConfirmEmail",
-                        pageHandler: null,
-                        values: new { area = "Identity", userId = user.Id, code = code, returnUrl = returnUrl },
-                        protocol: Request.Scheme);
-
-                    await _emailSender.SendEmailAsync(Input.Email, "Confirm your email",
-                        $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
+                    
 
                     if (_userManager.Options.SignIn.RequireConfirmedAccount)
                     {

@@ -1,9 +1,8 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using CotoviaSite2.Models;
+
 
 namespace CotoviaSite2.Data
 {
@@ -12,13 +11,23 @@ namespace CotoviaSite2.Data
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {
-            Database.EnsureCreated();
-            
+            Database.EnsureCreated();           
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
 
             base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<Utilizadores>().HasData(
+               new Utilizadores { ID = 1, Nome = "António Maria", Email = "a2000@cotovia.pt", Cargo = (Cargo)0, Foto = "C:/Imagens/foto1"},
+               new Utilizadores { ID = 2, Nome = "Manuel Lopes", Email = "r2000@cotovia.pt", Cargo = (Cargo)1, Foto = "C:/Imagens/foto2" },
+               new Utilizadores { ID = 3, Nome = "Raquel Andrade", Email = "r2001@cotovia.pt", Cargo = (Cargo)1, Foto = "C:/Imagens/foto3" },
+               new Utilizadores { ID = 4, Nome = "Ana Gomes", Email = "r2002@cotovia.pt", Cargo = (Cargo)1, Foto = "C:/Imagens/foto4" },
+               new Utilizadores { ID = 5, Nome = "João Maria", Email = "a2001@cotovia.pt", Cargo = (Cargo)0, Foto = "C:/Imagens/foto5" },
+               new Utilizadores { ID = 6, Nome = "Carlos Pinha", Email = "a2002@cotovia.pt", Cargo = (Cargo)0, Foto = "C:/Imagens/foto6" },
+               new Utilizadores { ID = 7, Nome = "Maria Antónia", Email = "r2003@cotovia.pt", Cargo = (Cargo)1, Foto = "C:/Imagens/foto7" },
+               new Utilizadores { ID = 8, Nome = "Giselle Marie", Email = "a2003@cotovia.pt", Cargo = (Cargo)0, Foto = "C:/Imagens/foto8" }
+            );
 
             modelBuilder.Entity<Fotografias>().HasData(
                new Fotografias { ID = 1, Foto = "C:/Imagens/foto1", DataFoto = new DateTime(2021, 2, 9).Date, LocalFoto = "Tomar", Fotografo = "João Silva" },
@@ -32,6 +41,10 @@ namespace CotoviaSite2.Data
                new Fotografias { ID = 9, Foto = "C:/Imagens/foto9", DataFoto = new DateTime(2021, 2, 9).Date, LocalFoto = "Porto", Fotografo = "Francisco Rodrigues" }
             );
 
+            modelBuilder.Entity<Noticias>(n => {
+                n.HasOne(campo => campo.Autor).WithMany(fk => fk.ListaNoticiasEscritas).HasForeignKey(fk => fk.AutorFK).OnDelete(DeleteBehavior.Restrict);
+                n.HasOne(campo => campo.Revisor).WithMany(fk => fk.ListaNoticiasRevistas).HasForeignKey(fk => fk.RevisorFK).OnDelete(DeleteBehavior.Restrict);
+            });
             modelBuilder.Entity<Noticias>().HasData(
                new Noticias { ID = 1, Data = new DateTime(2021, 2, 9).Date, Titulo = "Titulo 1", Resumo = "Resumo 1", Conteudo = "Conteudo 1", Estado= (Estado)0,Tema= (Tema)0, AutorFK = 4, RevisorFK = 1 },
                new Noticias { ID = 2, Data = new DateTime(2021, 2, 10).Date, Titulo = "Titulo 2", Resumo = "Resumo 2", Conteudo = "Conteudo 2", Estado = (Estado)0, Tema = (Tema)4, AutorFK = 2, RevisorFK = 1 },
@@ -58,9 +71,9 @@ namespace CotoviaSite2.Data
                 );
             modelBuilder.Entity<FotosNoticias>().HasKey(c => new { c.FotoFK, c.NoticiaFK });
         }
+        public DbSet<CotoviaSite2.Models.Utilizadores> Utilizadores { get; set; }
         public DbSet<CotoviaSite2.Models.Noticias> Noticias { get; set; }
         public DbSet<CotoviaSite2.Models.Fotografias> Fotografias { get; set; }
-        public DbSet<CotoviaSite2.Models.Utilizadores> Utilizadores { get; set; }
         public DbSet<FotosNoticias> FotosNoticias { get; set; }
     }
 }

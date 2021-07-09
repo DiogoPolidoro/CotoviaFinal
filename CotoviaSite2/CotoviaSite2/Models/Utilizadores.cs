@@ -17,6 +17,8 @@ namespace CotoviaSite2.Models
         [Key]
         public int ID { set; get; }
 
+        public string UserID { set; get; }
+
         [Required(ErrorMessage = "O Nome é de preenchimento obrigatório")]
         [RegularExpression("[A-ZÁÍÓÚÉÂ][a-zãõáéíóúàèìòùäëïöüçâêîôû]+" +
            "(( | e |-|'| d'| de | d[ao](s)? )[A-ZÁÍÓÚÉÂ][a-zãõáéíóúàèìòùäëïöüçâêîôû]+)",

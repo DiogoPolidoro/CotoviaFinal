@@ -7,11 +7,11 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace CotoviaSite2.Data.Migrations
+namespace CotoviaSite2.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210626122133_mig4")]
-    partial class mig4
+    [Migration("20210709104805_mig1")]
+    partial class mig1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -27,9 +27,6 @@ namespace CotoviaSite2.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int?>("AutorFK")
-                        .HasColumnType("int");
 
                     b.Property<DateTime>("DataFoto")
                         .HasColumnType("datetime2");
@@ -223,17 +220,11 @@ namespace CotoviaSite2.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("UtilizadoresID")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("UtilizadoresID1")
-                        .HasColumnType("int");
-
                     b.HasKey("ID");
 
-                    b.HasIndex("UtilizadoresID");
+                    b.HasIndex("AutorFK");
 
-                    b.HasIndex("UtilizadoresID1");
+                    b.HasIndex("RevisorFK");
 
                     b.ToTable("Noticias");
 
@@ -367,15 +358,22 @@ namespace CotoviaSite2.Data.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int>("Cargo")
+                        .HasColumnType("int");
+
                     b.Property<string>("Email")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Foto")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Nome")
                         .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserID")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ID");
@@ -386,37 +384,66 @@ namespace CotoviaSite2.Data.Migrations
                         new
                         {
                             ID = 1,
-                            Email = "a2101@cotovia.pt",
-                            Foto = "C:/Imagens/A_Mendonca_A.jpg",
-                            Nome = "Álvaro Mendonça"
+                            Cargo = 0,
+                            Email = "a2000@cotovia.pt",
+                            Foto = "C:/Imagens/foto1",
+                            Nome = "António Maria"
                         },
                         new
                         {
                             ID = 2,
-                            Email = "a2004@cotovia.pt",
-                            Foto = "C:/Imagens/C_Domingues_A.jpg",
-                            Nome = "Cátia Domingues"
+                            Cargo = 1,
+                            Email = "r2000@cotovia.pt",
+                            Foto = "C:/Imagens/foto2",
+                            Nome = "Manuel Lopes"
                         },
                         new
                         {
                             ID = 3,
-                            Email = "a2003@cotovia.pt",
-                            Foto = "C:/Imagens/F_Lopes_A.jpg",
-                            Nome = "Francisco Lopes"
+                            Cargo = 1,
+                            Email = "r2001@cotovia.pt",
+                            Foto = "C:/Imagens/foto3",
+                            Nome = "Raquel Andrade"
                         },
                         new
                         {
                             ID = 4,
-                            Email = "a2002@cotovia.pt",
-                            Foto = "C:/Imagens/N_Faria_A.jpg",
-                            Nome = "Nuno Faria"
+                            Cargo = 1,
+                            Email = "r2002@cotovia.pt",
+                            Foto = "C:/Imagens/foto4",
+                            Nome = "Ana Gomes"
                         },
                         new
                         {
                             ID = 5,
+                            Cargo = 0,
                             Email = "a2001@cotovia.pt",
-                            Foto = "C:/Imagens/I_Pereira_A.jpg",
-                            Nome = "Inês Pereira"
+                            Foto = "C:/Imagens/foto5",
+                            Nome = "João Maria"
+                        },
+                        new
+                        {
+                            ID = 6,
+                            Cargo = 0,
+                            Email = "a2002@cotovia.pt",
+                            Foto = "C:/Imagens/foto6",
+                            Nome = "Carlos Pinha"
+                        },
+                        new
+                        {
+                            ID = 7,
+                            Cargo = 1,
+                            Email = "r2003@cotovia.pt",
+                            Foto = "C:/Imagens/foto7",
+                            Nome = "Maria Antónia"
+                        },
+                        new
+                        {
+                            ID = 8,
+                            Cargo = 0,
+                            Email = "a2003@cotovia.pt",
+                            Foto = "C:/Imagens/foto8",
+                            Nome = "Giselle Marie"
                         });
                 });
 
@@ -623,13 +650,13 @@ namespace CotoviaSite2.Data.Migrations
             modelBuilder.Entity("CotoviaSite2.Models.FotosNoticias", b =>
                 {
                     b.HasOne("CotoviaSite2.Models.Fotografias", "Fotografias")
-                        .WithMany()
+                        .WithMany("ListaNoticias")
                         .HasForeignKey("FotoFK")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("CotoviaSite2.Models.Noticias", "Noticia")
-                        .WithMany()
+                        .WithMany("ListaFotografias")
                         .HasForeignKey("NoticiaFK")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -641,13 +668,21 @@ namespace CotoviaSite2.Data.Migrations
 
             modelBuilder.Entity("CotoviaSite2.Models.Noticias", b =>
                 {
-                    b.HasOne("CotoviaSite2.Models.Utilizadores", null)
+                    b.HasOne("CotoviaSite2.Models.Utilizadores", "Autor")
                         .WithMany("ListaNoticiasEscritas")
-                        .HasForeignKey("UtilizadoresID");
+                        .HasForeignKey("AutorFK")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
 
-                    b.HasOne("CotoviaSite2.Models.Utilizadores", null)
+                    b.HasOne("CotoviaSite2.Models.Utilizadores", "Revisor")
                         .WithMany("ListaNoticiasRevistas")
-                        .HasForeignKey("UtilizadoresID1");
+                        .HasForeignKey("RevisorFK")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Autor");
+
+                    b.Navigation("Revisor");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -699,6 +734,16 @@ namespace CotoviaSite2.Data.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("CotoviaSite2.Models.Fotografias", b =>
+                {
+                    b.Navigation("ListaNoticias");
+                });
+
+            modelBuilder.Entity("CotoviaSite2.Models.Noticias", b =>
+                {
+                    b.Navigation("ListaFotografias");
                 });
 
             modelBuilder.Entity("CotoviaSite2.Models.Utilizadores", b =>
