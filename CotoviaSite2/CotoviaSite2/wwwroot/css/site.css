@@ -5,23 +5,36 @@ a.navbar-brand {
   white-space: normal;
   text-align: center;
   word-break: break-all;
+  
 }
 
 /* Provide sufficient contrast against white background */
 a {
-  color: #0366d6;
+    /*color: #0366d6;*/
 }
 
 .btn-primary {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
+    /*color: #fff;*/
+    background-color: yellowgreen;
+    border-color: yellowgreen;
 }
 
+.button{
+    transition-duration:0.4s;
+
+}
+.button:hover {
+        background-color: black; 
+        color: yellowgreen;
+        border-color: black;
+    }
+
+
+
 .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
-  color: #fff;
+  /*color: #fff;
   background-color: #1b6ec2;
-  border-color: #1861ac;
+  border-color: #1861ac;*/
 }
 
 /* Sticky footer styles
@@ -58,9 +71,14 @@ html {
   min-height: 100%;
 }
 
+header {
+    background-color: yellowgreen;
+}
+
 body {
-  /* Margin bottom by footer height */
-  margin-bottom: 60px;
+    /* Margin bottom by footer height */
+    margin-bottom: 60px;
+    /*background-color: yellowgreen;*/
 }
 .footer {
   position: absolute;
@@ -84,20 +102,60 @@ body {
 
 .titulo{
     font-size: 80px;
-    font-family: Garamond;
+    font-family: 'Franklin Gothic';
+    color: yellowgreen;
+    font-weight: bolder;
+    
 }
 
-.subtitulo{
+.subtitulo {
     font-size: 40px;
-    font-family: Garamond;
+    font-family: 'Franklin Gothic';
 }
 
 .extratitulo {
-    font-size: 30px;
-    font-family: Garamond;
+    font-size: 25px;
+    font-family: 'Franklin Gothic';
 }
 
 .texto {
     font-size: 20px;
-    font-family: Garamond;
+    font-family: 'Franklin Gothic';
+}
+.links {
+    font-size: 15px;
+    font-family: 'Franklin Gothic';
+    transition-duration: 0.2s;
+    color: black;
+}
+
+.links:hover {
+        color: yellowgreen;
+        border-color: black;
+}
+
+.copyright {
+    font-size: 15px;
+    font-family: 'Franklin Gothic';
+    color: grey;
+}
+
+.linkext {
+    font-size: 15px;
+    font-family: 'Franklin Gothic';
+    transition-duration: 0.2s;
+    color: grey;
+}
+
+
+.linkext:hover {
+        color: yellowgreen;
+        border-color: black;
+}
+
+
+.inserir{
+    background-color:yellowgreen;
+    color:black;
+
 }

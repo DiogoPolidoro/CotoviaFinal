@@ -59,7 +59,7 @@ namespace CotoviaSite2.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ID,DataFoto,LocalFoto,Fotografo,AutorFK")] Fotografias fotografias, IFormFile Foto)
+        public async Task<IActionResult> Create([Bind("ID,DataFoto,NomeFoto,LocalFoto,Fotografo,AutorFK")] Fotografias fotografias, IFormFile Foto)
         {
 
             if (Foto == null)
@@ -123,7 +123,7 @@ namespace CotoviaSite2.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ID,Foto,DataFoto,LocalFoto,Fotografo,AutorFK")] Fotografias fotografias)
+        public async Task<IActionResult> Edit(int id, [Bind("ID,Foto,NomeFoto,DataFoto,LocalFoto,Fotografo,AutorFK")] Fotografias fotografias)
         {
             if (id != fotografias.ID)
             {

@@ -17,7 +17,10 @@ namespace CotoviaSite2.Models
 
         [Key]
         public int ID { set; get; }
+        [Display(Name = "Fotografia")]
         public string Foto { get; set; }
+        [Display(Name = "Nome para a Foto")]
+        public string NomeFoto { get; set; }
         [Display(Name ="Data")]
         public DateTime DataFoto { get; set; }
         [Display(Name = "Local")]

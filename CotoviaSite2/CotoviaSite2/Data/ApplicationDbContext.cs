@@ -33,15 +33,15 @@ namespace CotoviaSite2.Data
             );
 
             modelBuilder.Entity<Fotografias>().HasData(
-               new Fotografias { ID = 1, Foto = "C:/Imagens/foto1", DataFoto = new DateTime(2021, 2, 9).Date, LocalFoto = "Tomar", Fotografo = "João Silva" },
-               new Fotografias { ID = 2, Foto = "C:/Imagens/foto2", DataFoto = new DateTime(2021, 2, 9).Date, LocalFoto = "Leiria", Fotografo = "Maria dos Santos" },
-               new Fotografias { ID = 3, Foto = "C:/Imagens/foto3", DataFoto = new DateTime(2021, 2, 9).Date, LocalFoto = "Coimbra", Fotografo = "Joana Lopes" },
-               new Fotografias { ID = 4, Foto = "C:/Imagens/foto4", DataFoto = new DateTime(2021, 2, 9).Date, LocalFoto = "Aveiro", Fotografo = "Manuel Oliveira" },
-               new Fotografias { ID = 5, Foto = "C:/Imagens/foto5", DataFoto = new DateTime(2021, 2, 9).Date, LocalFoto = "Tomar", Fotografo = "João Silva" },
-               new Fotografias { ID = 6, Foto = "C:/Imagens/foto6", DataFoto = new DateTime(2021, 2, 9).Date, LocalFoto = "Tomar", Fotografo = "João Silva" },
-               new Fotografias { ID = 7, Foto = "C:/Imagens/foto7", DataFoto = new DateTime(2021, 2, 9).Date, LocalFoto = "Lisboa", Fotografo = "Carolina Cunha" },
-               new Fotografias { ID = 8, Foto = "C:/Imagens/foto8", DataFoto = new DateTime(2021, 2, 9).Date, LocalFoto = "Porto", Fotografo = "Francisco Rodrigues" },
-               new Fotografias { ID = 9, Foto = "C:/Imagens/foto9", DataFoto = new DateTime(2021, 2, 9).Date, LocalFoto = "Porto", Fotografo = "Francisco Rodrigues" }
+               new Fotografias { ID = 1, Foto = "C:/Imagens/foto1", NomeFoto="Foto1", DataFoto = new DateTime(2021, 2, 9).Date, LocalFoto = "Tomar", Fotografo = "João Silva" },
+               new Fotografias { ID = 2, Foto = "C:/Imagens/foto2", NomeFoto = "Foto2", DataFoto = new DateTime(2021, 2, 9).Date, LocalFoto = "Leiria", Fotografo = "Maria dos Santos" },
+               new Fotografias { ID = 3, Foto = "C:/Imagens/foto3", NomeFoto = "Foto3", DataFoto = new DateTime(2021, 2, 9).Date, LocalFoto = "Coimbra", Fotografo = "Joana Lopes" },
+               new Fotografias { ID = 4, Foto = "C:/Imagens/foto4", NomeFoto = "Foto4", DataFoto = new DateTime(2021, 2, 9).Date, LocalFoto = "Aveiro", Fotografo = "Manuel Oliveira" },
+               new Fotografias { ID = 5, Foto = "C:/Imagens/foto5", NomeFoto = "Foto5", DataFoto = new DateTime(2021, 2, 9).Date, LocalFoto = "Tomar", Fotografo = "João Silva" },
+               new Fotografias { ID = 6, Foto = "C:/Imagens/foto6", NomeFoto = "Foto6", DataFoto = new DateTime(2021, 2, 9).Date, LocalFoto = "Tomar", Fotografo = "João Silva" },
+               new Fotografias { ID = 7, Foto = "C:/Imagens/foto7", NomeFoto = "Foto7", DataFoto = new DateTime(2021, 2, 9).Date, LocalFoto = "Lisboa", Fotografo = "Carolina Cunha" },
+               new Fotografias { ID = 8, Foto = "C:/Imagens/foto8", NomeFoto = "Foto8", DataFoto = new DateTime(2021, 2, 9).Date, LocalFoto = "Porto", Fotografo = "Francisco Rodrigues" },
+               new Fotografias { ID = 9, Foto = "C:/Imagens/foto9", NomeFoto = "Foto9", DataFoto = new DateTime(2021, 2, 9).Date, LocalFoto = "Porto", Fotografo = "Francisco Rodrigues" }
             );
 
             modelBuilder.Entity<Noticias>(n => {

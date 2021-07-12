@@ -4,39 +4,43 @@
     ViewData["Title"] = "Details";
 }
 
-<h1 class="subtitulo">Details</h1>
-
+<h1 class="subtitulo">Fotografias</h1>
+<h4 class="extratitulo">Detalhes da Fotografia</h4>
+<a asp-action="Index" class="links">Voltar à Lista</a> | <a asp-action="Edit" asp-route-id="@Model.ID" class="links">Editar esta fotografia</a>
+<hr />
 <div class="texto">
     <h4 class="extratitulo">Fotografias</h4>
     <hr />
     <dl class="row">
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Foto)
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Foto)
+        <dd class="col-sm-10">
+            <img src="~/fotos/@Model.Foto" alt="photo of @Model.Fotografo" title="@Model.Fotografo" height="200" />
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.NomeFoto)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.NomeFoto)
+        </dd>
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.DataFoto)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.DataFoto)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.LocalFoto)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.LocalFoto)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Fotografo)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Fotografo)
         </dd>
     </dl>
-</div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model.ID" class="texto">Edit</a> |
-    <a asp-action="Index" class="texto">Back to List</a>
 </div>

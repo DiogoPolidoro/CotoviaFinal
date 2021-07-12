@@ -4,9 +4,9 @@
     ViewData["Title"] = "Edit";
 }
 
-<h1 class="subtitulo">Edit</h1>
-
-<h4 class="extratitulo">Fotografias</h4>
+<h1 class="subtitulo">Fotografias</h1>
+<h4 class="extratitulo">Editar fotografia</h4>
+<a asp-action="Index" class="links">Voltar à Lista</a>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -14,13 +14,19 @@
             <div asp-validation-summary="ModelOnly" class="text-danger texto"></div>
             <input type="hidden" asp-for="ID" />
             <div class="form-group">
-                <label asp-for="Foto" class="control-label texto"></label>
-                <input asp-for="Foto" class="form-control" />
+                <img src="~/fotos/@Model.Foto" alt="photo of @Model.Fotografo" title="@Model.Fotografo" height="200" />
+                <input type="file" name="Foto" accept=".jpg,.png" style="color:darkgrey" />
                 <span asp-validation-for="Foto" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label asp-for="NomeFoto" class="texto"></label>
+                <input asp-for="NomeFoto" class="form-control" />
+                <span asp-validation-for="NomeFoto" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <label asp-for="DataFoto" class="control-label texto"></label>
-                <input asp-for="DataFoto" class="form-control" />
+                <!--<input asp-for="DataFoto" class="form-control" />-->
+                @Html.DisplayFor(model => model.DataFoto)
                 <span asp-validation-for="DataFoto" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -34,14 +40,10 @@
                 <span asp-validation-for="Fotografo" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary texto" />
+                <input type="submit" value="Guardar alterações" class="btn btn-primary button texto" />
             </div>
         </form>
     </div>
-</div>
-
-<div>
-    <a asp-action="Index" class="texto">Back to List</a>
 </div>
 
 @section Scripts {

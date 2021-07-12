@@ -4,14 +4,16 @@ using CotoviaSite2.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace CotoviaSite2.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210712144546_mig2")]
+    partial class mig2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -120,8 +122,7 @@ namespace CotoviaSite2.Migrations
                             DataFoto = new DateTime(2021, 2, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Foto = "C:/Imagens/foto1",
                             Fotografo = "João Silva",
-                            LocalFoto = "Tomar",
-                            NomeFoto = "Foto1"
+                            LocalFoto = "Tomar"
                         },
                         new
                         {
@@ -129,8 +130,7 @@ namespace CotoviaSite2.Migrations
                             DataFoto = new DateTime(2021, 2, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Foto = "C:/Imagens/foto2",
                             Fotografo = "Maria dos Santos",
-                            LocalFoto = "Leiria",
-                            NomeFoto = "Foto2"
+                            LocalFoto = "Leiria"
                         },
                         new
                         {
@@ -138,8 +138,7 @@ namespace CotoviaSite2.Migrations
                             DataFoto = new DateTime(2021, 2, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Foto = "C:/Imagens/foto3",
                             Fotografo = "Joana Lopes",
-                            LocalFoto = "Coimbra",
-                            NomeFoto = "Foto3"
+                            LocalFoto = "Coimbra"
                         },
                         new
                         {
@@ -147,8 +146,7 @@ namespace CotoviaSite2.Migrations
                             DataFoto = new DateTime(2021, 2, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Foto = "C:/Imagens/foto4",
                             Fotografo = "Manuel Oliveira",
-                            LocalFoto = "Aveiro",
-                            NomeFoto = "Foto4"
+                            LocalFoto = "Aveiro"
                         },
                         new
                         {
@@ -156,8 +154,7 @@ namespace CotoviaSite2.Migrations
                             DataFoto = new DateTime(2021, 2, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Foto = "C:/Imagens/foto5",
                             Fotografo = "João Silva",
-                            LocalFoto = "Tomar",
-                            NomeFoto = "Foto5"
+                            LocalFoto = "Tomar"
                         },
                         new
                         {
@@ -165,8 +162,7 @@ namespace CotoviaSite2.Migrations
                             DataFoto = new DateTime(2021, 2, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Foto = "C:/Imagens/foto6",
                             Fotografo = "João Silva",
-                            LocalFoto = "Tomar",
-                            NomeFoto = "Foto6"
+                            LocalFoto = "Tomar"
                         },
                         new
                         {
@@ -174,8 +170,7 @@ namespace CotoviaSite2.Migrations
                             DataFoto = new DateTime(2021, 2, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Foto = "C:/Imagens/foto7",
                             Fotografo = "Carolina Cunha",
-                            LocalFoto = "Lisboa",
-                            NomeFoto = "Foto7"
+                            LocalFoto = "Lisboa"
                         },
                         new
                         {
@@ -183,8 +178,7 @@ namespace CotoviaSite2.Migrations
                             DataFoto = new DateTime(2021, 2, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Foto = "C:/Imagens/foto8",
                             Fotografo = "Francisco Rodrigues",
-                            LocalFoto = "Porto",
-                            NomeFoto = "Foto8"
+                            LocalFoto = "Porto"
                         },
                         new
                         {
@@ -192,8 +186,7 @@ namespace CotoviaSite2.Migrations
                             DataFoto = new DateTime(2021, 2, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Foto = "C:/Imagens/foto9",
                             Fotografo = "Francisco Rodrigues",
-                            LocalFoto = "Porto",
-                            NomeFoto = "Foto9"
+                            LocalFoto = "Porto"
                         });
                 });
 

@@ -44,8 +44,10 @@ namespace CotoviaSite2.Controllers
         }
 
         // GET: Noticias/Create
-        public IActionResult Create()
+        public async Task<IActionResult> CreateAsync()
         {
+            ViewData["fotos"] = new SelectList(await _context.Fotografias.ToListAsync());
+
             return View();
         }
         public IActionResult Ambiente()
@@ -114,6 +116,7 @@ namespace CotoviaSite2.Controllers
             {
                 return NotFound();
             }
+            ViewData["fotos"] = new SelectList(await _context.Fotografias.ToListAsync());
             return View(noticias);
         }
 
