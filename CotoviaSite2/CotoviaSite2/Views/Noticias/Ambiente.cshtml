@@ -19,7 +19,7 @@
                         <h5 class="card-title extratitulo">@Html.DisplayFor(modelItem => item.Titulo)</h5>
                         <p class="card-text datacartao">@Html.DisplayFor(modelItem => item.Data)</p>
                         <p class="card-text texto">@Html.DisplayFor(modelItem => item.Resumo)</p>
-                        <a asp-area="" asp-controller="Noticias" asp-action="CorpoNot" class="btn button btn-primary">Ler mais</a>
+                        <a asp-area="" asp-controller="Noticias" asp-action="CorpoNot" asp-route-id="@item.ID" class="btn button btn-primary">Ler mais</a>
                     </div>
                 </div>
             </div>
