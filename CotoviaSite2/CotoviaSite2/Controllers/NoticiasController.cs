@@ -104,13 +104,20 @@ namespace CotoviaSite2.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ID,Data,Titulo,Resumo,Conteudo,Estado,Tema,ListaFotografias")] Noticias noticias)
+        public async Task<IActionResult> Create([Bind("ID,Data,Titulo,Resumo,Conteudo,Tema")] Noticias noticias, int[] ListaFotografias)
         {
             if (ModelState.IsValid)
             {
                 var utilizador = await _context.Utilizadores.FirstOrDefaultAsync(u => u.UserID == _userManager.GetUserId(User));
                 noticias.AutorFK = utilizador.ID;
+                //Estado por default é "Pendente" que é equivalente ao 0
+                noticias.Estado = 0;
                 _context.Add(noticias);
+                await _context.SaveChangesAsync();
+                foreach(var fotoID in ListaFotografias)
+                {
+                    _context.FotosNoticias.Add(new FotosNoticias { NoticiaFK = noticias.ID, FotoFK = fotoID });
+                }
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }

@@ -11,25 +11,16 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Data)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.Titulo)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Resumo)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Conteudo)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Estado)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Tema)
             </th>
             <th>
-                Fotografia
+                @Html.DisplayNameFor(model => model.Estado)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Data)
             </th>
             <th></th>
         </tr>
@@ -37,38 +28,25 @@
     <tbody>
         @foreach (var item in Model)
         {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Data)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Titulo)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Resumo)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Conteudo)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Estado)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Tema)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ListaFotografias)
-                    @foreach (var foto in item.ListaFotografias)
-                    {
-                        @Html.DisplayFor(modelItem => foto.Fotografias.Foto)
-                    }
-                </td>
-                <td style="font-size:15px">
-                    <a asp-action="Edit" asp-route-id="@item.ID" class="links">Editar</a> |
-                    <a asp-action="Details" asp-route-id="@item.ID" class="links">Detalhes</a> |
-                    <a asp-action="Delete" asp-route-id="@item.ID" class="links">Apagar</a>
-                </td>
-            </tr>
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Titulo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Tema)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Estado)
+            </td>           
+            <td>
+                @Html.DisplayFor(modelItem => item.Data)
+            </td>
+            <td style="font-size:15px">
+                <a asp-action="Edit" asp-route-id="@item.ID" class="links">Editar</a> |
+                <a asp-action="Details" asp-route-id="@item.ID" class="links">Detalhes</a> |
+                <a asp-action="Delete" asp-route-id="@item.ID" class="links">Apagar</a>
+            </td>
+        </tr>
         }
     </tbody>
 </table>

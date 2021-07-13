@@ -39,7 +39,6 @@ namespace CotoviaSite2.Models
         [Required]
         public Tema Tema { get; set; }
 
-        [Required]
         public Estado Estado { get; set; }
 
         public virtual ICollection<FotosNoticias> ListaFotografias { get; set; }

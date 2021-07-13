@@ -6,6 +6,8 @@
 }
 
 <h1 class="titulo">Entrar</h1>
+<h4 class="extratitulo">Apenas para funcionários</h4>
+<hr />
 <div class="row">
     <div class="col-md-4">
         <section>
@@ -39,9 +41,6 @@
                     </p>
                     <p>
                         <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl" class="links">Registar-se como novo utilizador</a>
-                    </p>
-                    <p>
-                        <a id="resend-confirmation" asp-page="./ResendEmailConfirmation" class="links">Reenviar confirmação</a>
                     </p>
                 </div>
             </form>
