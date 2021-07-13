@@ -4,39 +4,35 @@
     ViewData["Title"] = "Details";
 }
 
-<h1 class="subtitulo">Details</h1>
-
-<div >
-    <h4 class="extratitulo">Utilizadores</h4>
-    <hr />
+<h1 class="subtitulo">Utilizadores</h1>
+<h4 class="extratitulo">Detalhes do Utilizador</h4>
+<a asp-action="Index" class="links">Voltar à Lista</a> | <a asp-action="Edit" asp-route-id="@Model.ID" class="links">Editar este utilizador</a>
+<hr />
+<div>
     <dl class="row texto">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Nome)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Nome)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Email)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Email)
-        </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Foto)
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Foto)
+        <dd class="col-sm-10">
+            <img src="~/fotos/@Model.Foto" alt="photo of @Model.Nome" title="@Model.Nome" height="200" />
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Nome)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Nome)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Cargo)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Cargo)
         </dd>
     </dl>
-</div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model.ID" class="texto">Edit</a> |
-    <a asp-action="Index" class="texto">Back to List</a>
 </div>

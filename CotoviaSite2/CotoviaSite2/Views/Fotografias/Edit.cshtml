@@ -14,8 +14,8 @@
             <div asp-validation-summary="ModelOnly" class="text-danger texto"></div>
             <input type="hidden" asp-for="ID" />
             <div class="form-group">
-                <img src="~/fotos/@Model.Foto" alt="photo of @Model.Fotografo" title="@Model.Fotografo" height="200" />
-                <input type="file" name="Foto" accept=".jpg,.png" style="color:darkgrey" />
+                <img src="~/fotos/@Model.Foto" alt="photo of @Model.LocalFoto" title="@Model.Fotografo" height="200" />
+                <input asp-for="Foto" class="form-control" hidden />
                 <span asp-validation-for="Foto" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -25,7 +25,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="DataFoto" class="control-label texto"></label>
-                <!--<input asp-for="DataFoto" class="form-control" />-->
+                <input asp-for="DataFoto" class="form-control" hidden />
                 @Html.DisplayFor(model => model.DataFoto)
                 <span asp-validation-for="DataFoto" class="text-danger"></span>
             </div>

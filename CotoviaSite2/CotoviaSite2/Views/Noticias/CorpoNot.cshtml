@@ -1,0 +1,16 @@
+﻿@model CotoviaSite2.Models.Noticias
+
+@{
+    ViewData["Title"] = "CorpoNot";
+}
+
+<h1 class="titulo" >@Html.DisplayFor(model => model.Titulo)</h1>
+<div class="texto" style="position:center">
+    <h4>@Html.DisplayFor(model => model.Data)</h4> | <h4>@Html.DisplayFor(model => model.Autor)</h4> | <h4>@Html.DisplayFor(model => model.Tema)</h4>
+</div>
+<a asp-action="Index" class="links" style="position:center">Voltar à Lista</a> 
+<hr />
+<div class="texto" style="position:center">
+    <p>@Html.DisplayNameFor(model => model.Resumo)</p>
+    <p>@Html.DisplayNameFor(model => model.Conteudo)</p>
+</div>

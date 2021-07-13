@@ -1,12 +1,33 @@
-﻿@{
+﻿@model IEnumerable<CotoviaSite2.Models.Noticias>
+@{
     ViewData["Title"] = "Home Page";
 }
 
 <div class="text-center">
     <h1 class="titulo">Cotovia</h1>
-    <br />
     <h3 class="subtitulo">Notícias pela manhã todos os dias</h3>
-    <p class="texto">Trabalho desenvolvido por Ana Ribeiro e Diogo Polidoro para a disiplina de Tecnologias da Internet 2, do Instituto Politécnico de Tomar</p>
+    <hr />
+    <p class="texto"></p>
 </div>
+<div class="container-fluid">
+    <div class="row">
+        @foreach (var item in Model)
+        {
+
+            <div class="col-md-4" style="float:left">
+                <div class="card">
+                    <img class="card-img-top" src="~/fotos/@item.ListaFotografias" alt="Imagem da Noticia">
+                    <div class="card-body">
+                        <h5 class="card-title extratitulo">@Html.DisplayFor(modelItem => item.Titulo)</h5>
+                        <p class="card-text datacartao">@Html.DisplayFor(modelItem => item.Data)</p>
+                        <p class="card-text texto">@Html.DisplayFor(modelItem => item.Resumo)</p>
+                        <a href="" class="btn button btn-primary">Ler mais</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
 
 

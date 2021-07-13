@@ -1,4 +1,4 @@
-﻿
+﻿@model IEnumerable<CotoviaSite2.Models.Noticias>
 @{
     ViewData["Title"] = "Saúde";
 }
@@ -8,15 +8,23 @@
 <div class="text-center">
     <h1 class="titulo">Saúde</h1>
 </div>
-<br />
-<br />
-<div class="row quadrados texto">
-    <div class="col-2 d">
-        <img src="teste.jpeg" />
+<hr />
+<div class="container-fluid">
+    <div class="row">
+        @foreach (var item in Model)
+        {
+
+            <div class="col-md-4" style="float:left">
+                <div class="card">
+                    <img class="card-img-top" src="~/fotos/@item.ListaFotografias" alt="Imagem da Noticia">
+                    <div class="card-body">
+                        <h5 class="card-title extratitulo">@Html.DisplayFor(modelItem => item.Titulo)</h5>
+                        <p class="card-text datacartao">@Html.DisplayFor(modelItem => item.Data)</p>
+                        <p class="card-text texto">@Html.DisplayFor(modelItem => item.Resumo)</p>
+                        <a class="btn button btn-primary">Ler mais</a>
+                    </div>
+                </div>
+            </div>
+        }
     </div>
-    <div class="col-2 d">2</div>
-    <div class="col-2 d">3</div>
-    <div class="col-2 d">4</div>
-    <div class="col-2 d">5</div>
-    <div class="col-2 d">6</div>
 </div>

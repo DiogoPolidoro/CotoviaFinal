@@ -4,9 +4,9 @@
     ViewData["Title"] = "Create";
 }
 
-<h1 class="subtitulo">Create</h1>
-
-<h4 class="extratitulo">Utilizadores</h4>
+<h1 class="subtitulo">Utilizadores</h1>
+<h4 class="extratitulo">Criar novo utilizador</h4>
+<a asp-action="Index" class="links">Voltar à Lista</a>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -32,15 +32,12 @@
                 <select asp-for="Cargo" class="form-control" asp-items="Html.GetEnumSelectList<Cargo>()"><options>Selecione o cargo</options>>></select>
                 <span asp-validation-for="Cargo" class="text-danger"></span>
             </div>
+            <hr />
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary texto" />
+                <input type="submit" value="Submeter" class="btn btn-primary button texto" />
             </div>
         </form>
     </div>
-</div>
-
-<div>
-    <a asp-action="Index" class="texto">Back to List</a>
 </div>
 
 @section Scripts {

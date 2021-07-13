@@ -1,5 +1,7 @@
-﻿using CotoviaSite2.Models;
+﻿using CotoviaSite2.Data;
+using CotoviaSite2.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -13,14 +15,22 @@ namespace CotoviaSite2.Controllers
     {
         private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        /*public HomeController(ILogger<HomeController> logger)
         {
+            _logger = logger;
+        }*/
+        private readonly ApplicationDbContext _context;
+
+        public HomeController(ApplicationDbContext context, ILogger<HomeController> logger)
+        {
+            _context = context;
             _logger = logger;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> IndexAsync()
         {
-            return View();
+            
+            return View(await _context.Noticias.Where(m => m.Estado == Estado.Publicada).Include(m => m.ListaFotografias).OrderByDescending(m => m.Data).Take(3).ToListAsync());
         }
 
         public IActionResult Privacy()

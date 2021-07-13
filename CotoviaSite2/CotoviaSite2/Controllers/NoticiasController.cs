@@ -7,20 +7,63 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using CotoviaSite2.Data;
 using CotoviaSite2.Models;
+using Microsoft.Extensions.Logging;
 
 namespace CotoviaSite2.Controllers
 {
     public class NoticiasController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly ILogger<HomeController> _logger;
 
-        public NoticiasController(ApplicationDbContext context)
+        public NoticiasController(ApplicationDbContext context, ILogger<HomeController> logger)
         {
             _context = context;
+            _logger = logger;
         }
 
         // GET: Noticias
         public async Task<IActionResult> Index()
+        {
+            return View(await _context.Noticias.Include(m => m.ListaFotografias).ToListAsync());
+        }
+        public async Task<IActionResult> AmbienteAsync()
+        {
+            return View(await _context.Noticias.Where(m => m.Estado == Estado.Publicada).Where(m => m.Tema == Tema.Ambiente).Include(m => m.ListaFotografias).OrderByDescending(m => m.Data).ToListAsync());
+        }
+        public async Task<IActionResult> CienciaAsync()
+        {
+            return View(await _context.Noticias.Where(m => m.Estado == Estado.Publicada).Where(m => m.Tema == Tema.Ciencia).Include(m => m.ListaFotografias).OrderByDescending(m => m.Data).ToListAsync());
+        }
+        public async Task<IActionResult> CulturaAsync()
+        {
+            return View(await _context.Noticias.Where(m => m.Estado == Estado.Publicada).Where(m => m.Tema == Tema.Cultura).Include(m => m.ListaFotografias).OrderByDescending(m => m.Data).ToListAsync());
+        }
+        public async Task<IActionResult> DesportoAsync()
+        {
+            return View(await _context.Noticias.Where(m => m.Estado == Estado.Publicada).Where(m => m.Tema == Tema.Desporto).Include(m => m.ListaFotografias).OrderByDescending(m => m.Data).ToListAsync());
+        }
+        public async Task<IActionResult> EconomiaAsync()
+        {
+            return View(await _context.Noticias.Where(m => m.Estado == Estado.Publicada).Where(m => m.Tema == Tema.Economia).Include(m => m.ListaFotografias).OrderByDescending(m => m.Data).ToListAsync());
+        }
+        public async Task<IActionResult> OpiniaoAsync()
+        {
+            return View(await _context.Noticias.Where(m => m.Estado == Estado.Publicada).Where(m => m.Tema == Tema.Opiniao).Include(m => m.ListaFotografias).OrderByDescending(m => m.Data).ToListAsync());
+        }
+        public async Task<IActionResult> PoliticaAsync()
+        {
+            return View(await _context.Noticias.Where(m => m.Estado == Estado.Publicada).Where(m => m.Tema == Tema.Politica).Include(m => m.ListaFotografias).OrderByDescending(m => m.Data).ToListAsync());
+        }
+        public async Task<IActionResult> SaudeAsync()
+        {
+            return View(await _context.Noticias.Where(m => m.Estado == Estado.Publicada).Where(m => m.Tema == Tema.Saude).Include(m => m.ListaFotografias).OrderByDescending(m => m.Data).ToListAsync());
+        }
+        public async Task<IActionResult> TecnologiaAsync()
+        {
+            return View(await _context.Noticias.Where(m => m.Estado == Estado.Publicada).Where(m => m.Tema == Tema.Tecnologia).Include(m => m.ListaFotografias).OrderByDescending(m => m.Data).ToListAsync());
+        }
+        public async Task<IActionResult> CorpoNotAsync()
         {
             return View(await _context.Noticias.Include(m => m.ListaFotografias).ToListAsync());
         }
@@ -50,42 +93,7 @@ namespace CotoviaSite2.Controllers
 
             return View();
         }
-        public IActionResult Ambiente()
-        {
-            return View();
-        }
-        public IActionResult Ciencia()
-        {
-            return View();
-        }
-        public IActionResult Cultura()
-        {
-            return View();
-        }
-        public IActionResult Desporto()
-        {
-            return View();
-        }
-        public IActionResult Economia()
-        {
-            return View();
-        }
-        public IActionResult Opiniao()
-        {
-            return View();
-        }
-        public IActionResult Politica()
-        {
-            return View();
-        }
-        public IActionResult Saude()
-        {
-            return View();
-        }
-        public IActionResult Tecnologia()
-        {
-            return View();
-        }
+        
 
         // POST: Noticias/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.

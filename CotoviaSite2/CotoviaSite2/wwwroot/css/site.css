@@ -19,13 +19,15 @@ a {
     border-color: yellowgreen;
 }
 
-.button{
-    transition-duration:0.4s;
-
+.button {
+    transition-duration: 0.4s;
+    font-size: 20px;
+    font-family: 'Franklin Gothic';
+    color: black;
 }
 .button:hover {
         background-color: black; 
-        color: yellowgreen;
+        color: yellowgreen !important;
         border-color: black;
     }
 
@@ -95,11 +97,6 @@ body {
     grid-gap: 20px;
 }
 
-.d {
-    background-color: whitesmoke;
-    text-align: center;
-}
-
 .titulo{
     font-size: 80px;
     font-family: 'Franklin Gothic';
@@ -111,16 +108,19 @@ body {
 .subtitulo {
     font-size: 40px;
     font-family: 'Franklin Gothic';
+    color: black;
 }
 
 .extratitulo {
     font-size: 25px;
     font-family: 'Franklin Gothic';
+    color: black;
 }
 
 .texto {
     font-size: 20px;
     font-family: 'Franklin Gothic';
+    color:black;
 }
 .links {
     font-size: 15px;
@@ -147,15 +147,32 @@ body {
     color: grey;
 }
 
-
 .linkext:hover {
         color: yellowgreen;
         border-color: black;
 }
 
+.temas {
+    font-size: 20px;
+    font-family: 'Franklin Gothic';
+    color: black;
+    transition-duration: 0.3s;
+    height: 60px;
+    padding-top: 8px;
+}
 
-.inserir{
-    background-color:yellowgreen;
-    color:black;
+.temas:hover{
+    background-color: darkslategrey !important; 
+    color: yellowgreen;
+}
 
+nav {
+    padding-top: 0px !important;
+    padding-bottom: 0px !important;
+}
+
+.datacartao {
+    font-size: 10px;
+    font-family: 'Franklin Gothic';
+    color: black;
 }
