@@ -5,13 +5,14 @@
     var noticia = ViewBag.Noticia[0];
 }
 
-<h1 class="titulo">@noticia.Titulo</h1>
-<div class="texto" style="position:center">
-    <h4>@noticia.Data | @noticia.Autor.Nome | @noticia.Tema</h4>
+<div class="text-center">
+    <h1 class="titulo">@noticia.Titulo</h1>
+    <h4 class="texto">@noticia.Data | @noticia.Autor.Nome | @noticia.Tema</h4>
+    <a href="javascript:history.back(-1);" class="links">Voltar à Lista</a>
 </div>
-<a asp-action="Index" class="links" style="position:center">Voltar à Lista</a>
 <hr />
-<div class="texto" style="position:center">
+<div class="texto text-center">
+    <img class="card-img-top" src="~/fotos/@noticia.ListaFotografias" alt="Imagem da Noticia">
     <p>@noticia.Resumo</p>
     <p>@noticia.Conteudo</p>
 </div>

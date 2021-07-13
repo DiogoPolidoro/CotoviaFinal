@@ -4,7 +4,7 @@
     ViewData["Title"] = "Register";
 }
 
-<h2>@ViewData["Title"]</h2>
+<h2 class="titulo">Registar</h2>
 
 <form asp-route-returnUrl="@Model.ReturnUrl" method="post" enctype="multipart/form-data">
     <div class="row">
@@ -14,13 +14,13 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="form-group">
-                    <label asp-for="Input.Utilizador.Nome"></label>
+                    <label asp-for="Input.Utilizador.Nome" class="texto"></label>
                     <input asp-for="Input.Utilizador.Nome" class="form-control" />
                     <span asp-validation-for="Input.Utilizador.Nome" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     <label asp-for="Input.Foto" class="control-label texto"></label>
-                    <input type="file" name="Input.Foto" accept=".jpg,.png" style="color:blue;" />
+                    <input type="file" name="Input.Foto" accept=".jpg,.png" style="color:darkgrey" />
                     <span asp-validation-for="Input.Foto" class="text-danger"></span>
                 </div>
                 <div class="form-group">
@@ -28,22 +28,20 @@
                     <select asp-for="Input.Utilizador.Cargo" class="form-control" asp-items="Html.GetEnumSelectList<CotoviaSite2.Models.Cargo>()"><options>Selecione o cargo</options>>></select>
                     <span asp-validation-for="Input.Utilizador.Cargo" class="text-danger"></span>
                 </div>
-
-
             </div>
             <div class="col-md-6">  
                 <div class="form-group">
-                    <label asp-for="Input.Email"></label>
+                    <label asp-for="Input.Email" class="texto"></label>
                     <input asp-for="Input.Email" class="form-control" />
                     <span asp-validation-for="Input.Email" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <label asp-for="Input.Password"></label>
+                    <label asp-for="Input.Password" class="texto"></label>
                     <input asp-for="Input.Password" class="form-control" />
                     <span asp-validation-for="Input.Password" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <label asp-for="Input.ConfirmPassword"></label>
+                    <label asp-for="Input.ConfirmPassword" class="texto"></label>
                     <input asp-for="Input.ConfirmPassword" class="form-control" />
                     <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
                 </div>
@@ -52,7 +50,7 @@
     </div>
     <div class="row">
         <div class="col-md-6 text-right">
-            <button type="submit" class="btn btn-primary">Registar</button>
+            <button type="submit" class="btn btn-primary button texto">Registar</button>
         </div>
     </div>
 
