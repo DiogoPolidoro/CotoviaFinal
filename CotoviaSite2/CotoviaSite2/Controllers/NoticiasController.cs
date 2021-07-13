@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using CotoviaSite2.Data;
 using CotoviaSite2.Models;
 using Microsoft.Extensions.Logging;
+using Microsoft.AspNetCore.Identity;
 
 namespace CotoviaSite2.Controllers
 {
@@ -15,11 +16,13 @@ namespace CotoviaSite2.Controllers
     {
         private readonly ApplicationDbContext _context;
         private readonly ILogger<HomeController> _logger;
+        private readonly UserManager<ApplicationUser> _userManager;
 
-        public NoticiasController(ApplicationDbContext context, ILogger<HomeController> logger)
+        public NoticiasController(ApplicationDbContext context, ILogger<HomeController> logger, SignInManager<ApplicationUser> signInManager, UserManager<ApplicationUser> userManager)
         {
             _context = context;
             _logger = logger;
+            _userManager = userManager;
         }
 
         // GET: Noticias
@@ -63,9 +66,11 @@ namespace CotoviaSite2.Controllers
         {
             return View(await _context.Noticias.Where(m => m.Estado == Estado.Publicada).Where(m => m.Tema == Tema.Tecnologia).Include(m => m.ListaFotografias).OrderByDescending(m => m.Data).ToListAsync());
         }
-        public async Task<IActionResult> CorpoNotAsync()
+        [HttpGet]
+        public async Task<IActionResult> CorpoNot(int id)
         {
-            return View(await _context.Noticias.Include(m => m.ListaFotografias).ToListAsync());
+            ViewData["Noticia"] = await _context.Noticias.Include(m => m.ListaFotografias).Include(m => m.Autor).Where(n => n.ID == id).ToListAsync();
+            return View();
         }
 
         // GET: Noticias/Details/5
@@ -89,8 +94,7 @@ namespace CotoviaSite2.Controllers
         // GET: Noticias/Create
         public async Task<IActionResult> CreateAsync()
         {
-            ViewData["fotos"] = new SelectList(await _context.Fotografias.ToListAsync());
-
+            ViewData["fotos"] = await _context.Fotografias.Select(f => new SelectListItem() { Text = f.NomeFoto, Value = f.ID.ToString() }).ToListAsync();
             return View();
         }
         
@@ -100,10 +104,12 @@ namespace CotoviaSite2.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ID,Data,Titulo,Resumo,Conteudo,Estado,Tema")] Noticias noticias)
+        public async Task<IActionResult> Create([Bind("ID,Data,Titulo,Resumo,Conteudo,Estado,Tema,ListaFotografias")] Noticias noticias)
         {
             if (ModelState.IsValid)
             {
+                var utilizador = await _context.Utilizadores.FirstOrDefaultAsync(u => u.UserID == _userManager.GetUserId(User));
+                noticias.AutorFK = utilizador.ID;
                 _context.Add(noticias);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -144,6 +150,8 @@ namespace CotoviaSite2.Controllers
             {
                 try
                 {
+                    var utilizador = await _context.Utilizadores.FirstOrDefaultAsync(u => u.UserID == _userManager.GetUserId(User));
+                    noticias.AutorFK = utilizador.ID;
                     _context.Update(noticias);
                     await _context.SaveChangesAsync();
                 }

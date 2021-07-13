@@ -50,7 +50,7 @@ namespace CotoviaSite2.Models
 
         
         [ForeignKey(nameof(Revisor))]
-        public int RevisorFK { get; set; }
+        public int? RevisorFK { get; set; }
         public virtual Utilizadores Revisor { get; set; }
     }
 

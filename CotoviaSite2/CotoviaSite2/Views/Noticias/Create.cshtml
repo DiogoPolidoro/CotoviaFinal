@@ -44,7 +44,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="ListaFotografias" class="control-label texto">Fotografia(s)</label>
-                <select asp-for="ListaFotografias" class="form-control" asp-items="@(IEnumerable<SelectListItem>)ViewBag.fotos"><options>Selecione o tema</options>></select>
+                <select multiple asp-for="ListaFotografias" class="form-control" asp-items="@(IEnumerable<SelectListItem>)ViewBag.fotos"><options>Selecione o tema</options>></select>
                 <!--<span asp-validation-for="Tema" class="text-danger"></span>-->
             </div>
             <hr />
