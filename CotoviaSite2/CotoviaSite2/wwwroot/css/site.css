@@ -185,11 +185,12 @@ nav {
     text-align: -webkit-center;
 }
 
-.carousel-control{
-    background-color: darkgrey !important;
-
+.carousel-control {
+    background-color: white !important;
+    color: yellowgreen !important;
+    text-align: center;
 }
 
 #imagensCarousel{
-    background-color:darkgrey !important;
+    background-color:white !important;
 }

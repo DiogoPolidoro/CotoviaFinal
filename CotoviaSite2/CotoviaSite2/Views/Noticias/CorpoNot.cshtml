@@ -13,51 +13,53 @@
 </div>
 <hr />
 <div class="texto text-center">
-        <div id="imagensCarousel" class="carousel slide" data-ride="carousel">
-            <div class="carousel-indicators">
-                @foreach (var foto in ViewBag.fotos)
-                {
-                    if (i == 0)
-                    {
-                        <button type="button" data-target="#imagensCarousel" data-slide-to="@i" class="active" aria-current="true" aria-label="Slide @i+1"></button>
-                    }
-                    else
-                    {
-                        <button type="button" data-target="#imagensCarousel" data-slide-to="@i" aria-label="Slide @i+1"></button>
-                    }
-                    i++;
-                }
-                @{
-                    i = 0;
-                }
-            </div>
-            <div class="carousel-inner" style="height: 400px; width: auto">
-                @foreach (var foto in ViewBag.fotos)
-                {
-                    if (i == 0)
-                    {
-                        <div class="carousel-item active">
-                            <img src="~/fotos/@foto" class="d-block" alt="Imagem da Noticia">
-                        </div>
-                    }
-                    else
-                    {
-                        <div class="carousel-item">
-                            <img src="~/fotos/@foto" class="d-block" alt="Imagem da Noticia">
-                        </div>
-                    }
-                    i++;
-                }
-            </div>
-            <button class="carousel-control carousel-control-prev" type="button" data-target="#imagensCarousel" data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Anterior</span>
-            </button>
-            <button class="carousel-control carousel-control-next" type="button" data-target="#imagensCarousel" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Seguinte</span>
-            </button>
-        </div>
     <p>@noticia.Resumo</p>
+    <p></p>
+    <div id="imagensCarousel" class="carousel slide" data-ride="carousel">
+        <div class="carousel-indicators">
+            @foreach (var foto in ViewBag.fotos)
+            {
+                if (i == 0)
+                {
+                    <button type="button" data-target="#imagensCarousel" data-slide-to="@i" class="active" aria-current="true" aria-label="Slide @i+1"></button>
+                }
+                else
+                {
+                    <button type="button" data-target="#imagensCarousel" data-slide-to="@i" aria-label="Slide @i+1"></button>
+                }
+                i++;
+            }
+            @{
+                i = 0;
+            }
+        </div>
+        <div class="carousel-inner" style="height: 400px; width: auto">
+            @foreach (var foto in ViewBag.fotos)
+            {
+                if (i == 0)
+                {
+                    <div class="carousel-item active">
+                        <img src="~/fotos/@foto" class="d-block" alt="Imagem da Noticia">
+                    </div>
+                }
+                else
+                {
+                    <div class="carousel-item">
+                        <img src="~/fotos/@foto" class="d-block" alt="Imagem da Noticia">
+                    </div>
+                }
+                i++;
+            }
+        </div>
+        <button class="carousel-control carousel-control-prev" type="button" data-target="#imagensCarousel" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden" style="text-align:center">Anterior</span>
+        </button>
+        <button class="carousel-control carousel-control-next" type="button" data-target="#imagensCarousel" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden" style="text-align:center">Seguinte</span>
+        </button>
+    </div>
+    <br />
     <p>@noticia.Conteudo</p>
 </div>
