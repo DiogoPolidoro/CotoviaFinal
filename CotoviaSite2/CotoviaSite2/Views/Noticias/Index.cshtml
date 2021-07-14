@@ -42,11 +42,15 @@
                 @Html.DisplayFor(modelItem => item.Data)
             </td>
             <td style="font-size:15px">
-                @if (item.Estado == Estado.Pendente)
+                @if (item.Estado == Estado.Pendente && User.IsInRole("autor"))
                 {
                     <a asp-action="Edit" asp-route-id="@item.ID" class="links">Editar</a><span>|</span>
                 }
-                <a asp-action="Details" asp-route-id="@item.ID" class="links">Detalhes</a> |
+                @if (User.IsInRole("revisor"))
+                {
+                    <a asp-action="Aprovar" asp-route-id="@item.ID" class="links">Aprovar</a><span>|</span>
+                }
+
                 <a asp-action="Delete" asp-route-id="@item.ID" class="links">Apagar</a>
             </td>
         </tr>

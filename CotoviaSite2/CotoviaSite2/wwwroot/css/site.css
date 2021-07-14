@@ -176,3 +176,20 @@ nav {
     font-family: 'Franklin Gothic';
     color: black;
 }
+.carousel-item img{
+    height: 400px;
+    width: auto;
+}
+
+.carousel-item {
+    text-align: -webkit-center;
+}
+
+.carousel-control{
+    background-color: darkgrey !important;
+
+}
+
+#imagensCarousel{
+    background-color:darkgrey !important;
+}

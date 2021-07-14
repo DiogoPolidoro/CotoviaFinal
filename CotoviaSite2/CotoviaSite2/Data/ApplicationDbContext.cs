@@ -18,8 +18,13 @@ namespace CotoviaSite2.Data
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-
+            
             base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<IdentityRole>().HasData(
+               new IdentityRole { Id = "a", Name = "autor"},
+               new IdentityRole { Id = "r", Name = "revisor" }
+            );
 
             modelBuilder.Entity<Utilizadores>().HasData(
                new Utilizadores { ID = 1, Nome = "António Maria", Email = "a2000@cotovia.pt", Cargo = (Cargo)0, Foto = "C:/Imagens/foto1"},

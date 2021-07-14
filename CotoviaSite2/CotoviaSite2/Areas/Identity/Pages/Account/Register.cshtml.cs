@@ -102,6 +102,15 @@ namespace CotoviaSite2.Areas.Identity.Pages.Account
                         string extension = Path.GetExtension(Input.Foto.FileName).ToLower();
 
                         string nameOfFile = "" + g.ToString() + extension;
+                        if(Input.Email.Substring(0, 1) == "a")
+                        {
+                            await _userManager.AddToRoleAsync(user, "autor");
+                        }
+                        else
+                        {
+                            await _userManager.AddToRoleAsync(user, "revisor");
+                        }
+
 
                         Utilizadores novoUtilizador = new Utilizadores
                         {

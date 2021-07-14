@@ -10,9 +10,11 @@ using CotoviaSite2.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Hosting;
 using System.IO;
+using Microsoft.AspNetCore.Authorization;
 
 namespace CotoviaSite2.Controllers
 {
+    [Authorize(Roles = "autor")]
     public class FotografiasController : Controller
     {
         private readonly ApplicationDbContext _context;
