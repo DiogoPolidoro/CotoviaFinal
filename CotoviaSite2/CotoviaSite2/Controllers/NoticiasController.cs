@@ -114,9 +114,14 @@ namespace CotoviaSite2.Controllers
                 noticias.Estado = 0;
                 _context.Add(noticias);
                 await _context.SaveChangesAsync();
+                var i = 0;
                 foreach(var fotoID in ListaFotografias)
                 {
-                    _context.FotosNoticias.Add(new FotosNoticias { NoticiaFK = noticias.ID, FotoFK = fotoID });
+                    if(i == 0)
+                        _context.FotosNoticias.Add(new FotosNoticias { NoticiaFK = noticias.ID, FotoFK = fotoID, Default = 1 });
+                    else
+                        _context.FotosNoticias.Add(new FotosNoticias { NoticiaFK = noticias.ID, FotoFK = fotoID, Default = 0 });
+                    i++;
                 }
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -201,7 +206,12 @@ namespace CotoviaSite2.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
+            var associadas = await _context.FotosNoticias.Where(fn => fn.NoticiaFK == id).ToListAsync();
             var noticias = await _context.Noticias.FindAsync(id);
+            foreach(var fn in associadas)
+            {
+                _context.FotosNoticias.Remove(fn);
+            }
             _context.Noticias.Remove(noticias);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));

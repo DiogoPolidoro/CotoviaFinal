@@ -9,6 +9,12 @@ namespace CotoviaSite2.Models
 {
     public class FotosNoticias
     {
+        public FotosNoticias()
+        {
+            Default = 0;
+        }
+        
+        public int Default { get; set; }
         
         [ForeignKey(nameof(Fotografias))]
         public int FotoFK { get; set; }

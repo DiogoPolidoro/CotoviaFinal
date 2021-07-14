@@ -42,7 +42,10 @@
                 @Html.DisplayFor(modelItem => item.Data)
             </td>
             <td style="font-size:15px">
-                <a asp-action="Edit" asp-route-id="@item.ID" class="links">Editar</a> |
+                @if (item.Estado == Estado.Pendente)
+                {
+                    <a asp-action="Edit" asp-route-id="@item.ID" class="links">Editar</a><span>|</span>
+                }
                 <a asp-action="Details" asp-route-id="@item.ID" class="links">Detalhes</a> |
                 <a asp-action="Delete" asp-route-id="@item.ID" class="links">Apagar</a>
             </td>
