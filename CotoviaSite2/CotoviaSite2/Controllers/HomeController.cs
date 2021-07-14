@@ -29,8 +29,16 @@ namespace CotoviaSite2.Controllers
 
         public async Task<IActionResult> IndexAsync()
         {
-            
-            return View(await _context.Noticias.Where(m => m.Estado == Estado.Publicada).Include(m => m.ListaFotografias).OrderByDescending(m => m.Data).Take(3).ToListAsync());
+            var dados = await (from n in _context.Noticias
+                         join nf in _context.FotosNoticias on n.ID equals nf.NoticiaFK
+                         join f in _context.Fotografias on nf.FotoFK equals f.ID
+                         where n.Estado == Estado.Publicada
+                         select new NoticiasViewModel { 
+                         ID = n.ID, Data = n.Data, Titulo=n.Titulo, Resumo=n.Resumo, Foto=f.Foto
+                         }
+                         ).OrderByDescending(m => m.Data).Take(3).ToListAsync();
+            //return View(await _context.Noticias.Where(m => m.Estado == Estado.Publicada).Include(m => m.ListaFotografias).OrderByDescending(m => m.Data).Take(3).ToListAsync());
+            return View(dados);
         }
 
         public IActionResult Privacy()

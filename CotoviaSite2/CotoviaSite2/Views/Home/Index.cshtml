@@ -1,6 +1,7 @@
-﻿@model IEnumerable<CotoviaSite2.Models.Noticias>
+﻿@model IEnumerable<CotoviaSite2.Models.NoticiasViewModel>
 @{
     ViewData["Title"] = "Home Page";
+
 }
 
 <div class="text-center">
@@ -13,10 +14,10 @@
     <div class="row">
         @foreach (var item in Model)
         {
-
+           
             <div class="col-md-4" style="float:left">
                 <div class="card">
-                    <img class="card-img-top" src="~/fotos/@item.ListaFotografias" alt="Imagem da Noticia">
+                    <img class="card-img-top" src="~/fotos/@item.Foto" alt="Imagem da Noticia">
                     <div class="card-body">
                         <h5 class="card-title extratitulo">@Html.DisplayFor(modelItem => item.Titulo)</h5>
                         <p class="card-text datacartao">@Html.DisplayFor(modelItem => item.Data)</p>
