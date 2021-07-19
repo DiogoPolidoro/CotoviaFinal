@@ -49,12 +49,13 @@
                 @if (User.IsInRole("revisor"))
                 {
                     <a asp-action="Aprovar" asp-route-id="@item.ID" class="links">Aprovar</a><span>|</span>
-                }
+
 
                 <a asp-action="Delete" asp-route-id="@item.ID" class="links">Apagar</a>
+                }
             </td>
         </tr>
-        }
+            }
     </tbody>
 </table>
 <!--asp-action="Details"-->
