@@ -4,14 +4,16 @@ using CotoviaSite2.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace CotoviaSite2.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210719203900_mig7")]
+    partial class mig7
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -112,6 +114,89 @@ namespace CotoviaSite2.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("Fotografias");
+
+                    b.HasData(
+                        new
+                        {
+                            ID = 1,
+                            DataFoto = new DateTime(2021, 2, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Foto = "C:/Imagens/foto1",
+                            Fotografo = "João Silva",
+                            LocalFoto = "Tomar",
+                            NomeFoto = "Foto1"
+                        },
+                        new
+                        {
+                            ID = 2,
+                            DataFoto = new DateTime(2021, 2, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Foto = "C:/Imagens/foto2",
+                            Fotografo = "Maria dos Santos",
+                            LocalFoto = "Leiria",
+                            NomeFoto = "Foto2"
+                        },
+                        new
+                        {
+                            ID = 3,
+                            DataFoto = new DateTime(2021, 2, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Foto = "C:/Imagens/foto3",
+                            Fotografo = "Joana Lopes",
+                            LocalFoto = "Coimbra",
+                            NomeFoto = "Foto3"
+                        },
+                        new
+                        {
+                            ID = 4,
+                            DataFoto = new DateTime(2021, 2, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Foto = "C:/Imagens/foto4",
+                            Fotografo = "Manuel Oliveira",
+                            LocalFoto = "Aveiro",
+                            NomeFoto = "Foto4"
+                        },
+                        new
+                        {
+                            ID = 5,
+                            DataFoto = new DateTime(2021, 2, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Foto = "C:/Imagens/foto5",
+                            Fotografo = "João Silva",
+                            LocalFoto = "Tomar",
+                            NomeFoto = "Foto5"
+                        },
+                        new
+                        {
+                            ID = 6,
+                            DataFoto = new DateTime(2021, 2, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Foto = "C:/Imagens/foto6",
+                            Fotografo = "João Silva",
+                            LocalFoto = "Tomar",
+                            NomeFoto = "Foto6"
+                        },
+                        new
+                        {
+                            ID = 7,
+                            DataFoto = new DateTime(2021, 2, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Foto = "C:/Imagens/foto7",
+                            Fotografo = "Carolina Cunha",
+                            LocalFoto = "Lisboa",
+                            NomeFoto = "Foto7"
+                        },
+                        new
+                        {
+                            ID = 8,
+                            DataFoto = new DateTime(2021, 2, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Foto = "C:/Imagens/foto8",
+                            Fotografo = "Francisco Rodrigues",
+                            LocalFoto = "Porto",
+                            NomeFoto = "Foto8"
+                        },
+                        new
+                        {
+                            ID = 9,
+                            DataFoto = new DateTime(2021, 2, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Foto = "C:/Imagens/foto9",
+                            Fotografo = "Francisco Rodrigues",
+                            LocalFoto = "Porto",
+                            NomeFoto = "Foto9"
+                        });
                 });
 
             modelBuilder.Entity("CotoviaSite2.Models.FotosNoticias", b =>
@@ -130,6 +215,68 @@ namespace CotoviaSite2.Migrations
                     b.HasIndex("NoticiaFK");
 
                     b.ToTable("FotosNoticias");
+
+                    b.HasData(
+                        new
+                        {
+                            FotoFK = 1,
+                            NoticiaFK = 1,
+                            Default = 0
+                        },
+                        new
+                        {
+                            FotoFK = 4,
+                            NoticiaFK = 2,
+                            Default = 0
+                        },
+                        new
+                        {
+                            FotoFK = 8,
+                            NoticiaFK = 3,
+                            Default = 0
+                        },
+                        new
+                        {
+                            FotoFK = 3,
+                            NoticiaFK = 4,
+                            Default = 0
+                        },
+                        new
+                        {
+                            FotoFK = 7,
+                            NoticiaFK = 5,
+                            Default = 0
+                        },
+                        new
+                        {
+                            FotoFK = 1,
+                            NoticiaFK = 6,
+                            Default = 0
+                        },
+                        new
+                        {
+                            FotoFK = 5,
+                            NoticiaFK = 7,
+                            Default = 0
+                        },
+                        new
+                        {
+                            FotoFK = 9,
+                            NoticiaFK = 8,
+                            Default = 0
+                        },
+                        new
+                        {
+                            FotoFK = 2,
+                            NoticiaFK = 9,
+                            Default = 0
+                        },
+                        new
+                        {
+                            FotoFK = 6,
+                            NoticiaFK = 10,
+                            Default = 0
+                        });
                 });
 
             modelBuilder.Entity("CotoviaSite2.Models.Noticias", b =>
@@ -173,6 +320,128 @@ namespace CotoviaSite2.Migrations
                     b.HasIndex("RevisorFK");
 
                     b.ToTable("Noticias");
+
+                    b.HasData(
+                        new
+                        {
+                            ID = 1,
+                            AutorFK = 4,
+                            Conteudo = "Conteudo 1",
+                            Data = new DateTime(2021, 2, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Estado = 0,
+                            Resumo = "Resumo 1",
+                            RevisorFK = 1,
+                            Tema = 0,
+                            Titulo = "Titulo 1"
+                        },
+                        new
+                        {
+                            ID = 2,
+                            AutorFK = 2,
+                            Conteudo = "Conteudo 2",
+                            Data = new DateTime(2021, 2, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Estado = 0,
+                            Resumo = "Resumo 2",
+                            RevisorFK = 1,
+                            Tema = 4,
+                            Titulo = "Titulo 2"
+                        },
+                        new
+                        {
+                            ID = 3,
+                            AutorFK = 2,
+                            Conteudo = "Conteudo 3",
+                            Data = new DateTime(2021, 2, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Estado = 1,
+                            Resumo = "Resumo 3",
+                            RevisorFK = 2,
+                            Tema = 2,
+                            Titulo = "Titulo 3"
+                        },
+                        new
+                        {
+                            ID = 4,
+                            AutorFK = 1,
+                            Conteudo = "Conteudo 4",
+                            Data = new DateTime(2021, 2, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Estado = 0,
+                            Resumo = "Resumo 4",
+                            RevisorFK = 1,
+                            Tema = 6,
+                            Titulo = "Titulo 4"
+                        },
+                        new
+                        {
+                            ID = 5,
+                            AutorFK = 5,
+                            Conteudo = "Conteudo 5",
+                            Data = new DateTime(2021, 2, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Estado = 0,
+                            Resumo = "Resumo 5",
+                            RevisorFK = 3,
+                            Tema = 1,
+                            Titulo = "Titulo 5"
+                        },
+                        new
+                        {
+                            ID = 6,
+                            AutorFK = 3,
+                            Conteudo = "Conteudo 6",
+                            Data = new DateTime(2021, 2, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Estado = 1,
+                            Resumo = "Resumo 6",
+                            RevisorFK = 1,
+                            Tema = 3,
+                            Titulo = "Titulo 6"
+                        },
+                        new
+                        {
+                            ID = 7,
+                            AutorFK = 4,
+                            Conteudo = "Conteudo 7",
+                            Data = new DateTime(2021, 2, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Estado = 0,
+                            Resumo = "Resumo 7",
+                            RevisorFK = 3,
+                            Tema = 5,
+                            Titulo = "Titulo 7"
+                        },
+                        new
+                        {
+                            ID = 8,
+                            AutorFK = 5,
+                            Conteudo = "Conteudo 8",
+                            Data = new DateTime(2021, 2, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Estado = 1,
+                            Resumo = "Resumo 8",
+                            RevisorFK = 3,
+                            Tema = 2,
+                            Titulo = "Titulo 8"
+                        },
+                        new
+                        {
+                            ID = 9,
+                            AutorFK = 1,
+                            Conteudo = "Conteudo 9",
+                            Data = new DateTime(2021, 2, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Estado = 1,
+                            Resumo = "Resumo 9",
+                            RevisorFK = 2,
+                            Tema = 7,
+                            Titulo = "Titulo 9"
+                        },
+                        new
+                        {
+                            ID = 10,
+                            AutorFK = 2,
+                            Conteudo = "Conteudo 10",
+                            Data = new DateTime(2021, 2, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Estado = 1,
+                            Resumo = "Resumo 10",
+                            RevisorFK = 3,
+                            Tema = 8,
+                            Titulo = "Titulo 10"
+                        });
                 });
 
             modelBuilder.Entity("CotoviaSite2.Models.Utilizadores", b =>
@@ -201,6 +470,72 @@ namespace CotoviaSite2.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("Utilizadores");
+
+                    b.HasData(
+                        new
+                        {
+                            ID = 1,
+                            Cargo = 0,
+                            Email = "a2000@cotovia.pt",
+                            Foto = "C:/Imagens/foto1",
+                            Nome = "António Maria"
+                        },
+                        new
+                        {
+                            ID = 2,
+                            Cargo = 1,
+                            Email = "r2000@cotovia.pt",
+                            Foto = "C:/Imagens/foto2",
+                            Nome = "Manuel Lopes"
+                        },
+                        new
+                        {
+                            ID = 3,
+                            Cargo = 1,
+                            Email = "r2001@cotovia.pt",
+                            Foto = "C:/Imagens/foto3",
+                            Nome = "Raquel Andrade"
+                        },
+                        new
+                        {
+                            ID = 4,
+                            Cargo = 1,
+                            Email = "r2002@cotovia.pt",
+                            Foto = "C:/Imagens/foto4",
+                            Nome = "Ana Gomes"
+                        },
+                        new
+                        {
+                            ID = 5,
+                            Cargo = 0,
+                            Email = "a2001@cotovia.pt",
+                            Foto = "C:/Imagens/foto5",
+                            Nome = "João Maria"
+                        },
+                        new
+                        {
+                            ID = 6,
+                            Cargo = 0,
+                            Email = "a2002@cotovia.pt",
+                            Foto = "C:/Imagens/foto6",
+                            Nome = "Carlos Pinha"
+                        },
+                        new
+                        {
+                            ID = 7,
+                            Cargo = 1,
+                            Email = "r2003@cotovia.pt",
+                            Foto = "C:/Imagens/foto7",
+                            Nome = "Maria Antónia"
+                        },
+                        new
+                        {
+                            ID = 8,
+                            Cargo = 0,
+                            Email = "a2003@cotovia.pt",
+                            Foto = "C:/Imagens/foto8",
+                            Nome = "Giselle Marie"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -233,14 +568,14 @@ namespace CotoviaSite2.Migrations
                         new
                         {
                             Id = "a",
-                            ConcurrencyStamp = "ceca60e6-2d09-430b-acb1-80f43c5de512",
+                            ConcurrencyStamp = "eb555e3a-9032-444b-ab3d-d4f57925dcd0",
                             Name = "autor",
                             NormalizedName = "AUTOR"
                         },
                         new
                         {
                             Id = "r",
-                            ConcurrencyStamp = "825b2de5-3230-4015-a92c-6a67d16f2059",
+                            ConcurrencyStamp = "4c74565e-b00c-4064-908c-41f8e14d2030",
                             Name = "revisor",
                             NormalizedName = "REVISOR"
                         });

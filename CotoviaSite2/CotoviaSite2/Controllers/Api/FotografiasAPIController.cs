@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using CotoviaSite2.Data;
 using CotoviaSite2.Models;
+using Microsoft.AspNetCore.Hosting;
+using System.IO;
 
 namespace CotoviaSite2.Controllers.Api
 {
@@ -15,10 +17,12 @@ namespace CotoviaSite2.Controllers.Api
     public class FotografiasAPIController : ControllerBase
     {
         private readonly ApplicationDbContext _context;
+        private readonly IWebHostEnvironment _path;
 
-        public FotografiasAPIController(ApplicationDbContext context)
+        public FotografiasAPIController(ApplicationDbContext context, IWebHostEnvironment path)
         {
             _context = context;
+            _path = path;
         }
 
         // GET: api/FotografiasAPI
@@ -84,8 +88,25 @@ namespace CotoviaSite2.Controllers.Api
         // POST: api/FotografiasAPI
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Fotografias>> PostFotografias([FromForm]Fotografias fotografias)
+        public async Task<ActionResult<Fotografias>> PostFotografias([FromForm]Fotografias fotografias, IFormFile Foto)
         {
+            Guid g;
+            g = Guid.NewGuid();
+
+            string extension = Path.GetExtension(Foto.FileName).ToLower();
+
+            string nameOfFile = "" + g.ToString() + extension;
+            fotografias.Foto = nameOfFile;
+            string whereToStoreTheFile = _path.WebRootPath;
+            nameOfFile = Path.Combine(whereToStoreTheFile, "fotos", nameOfFile);
+
+            using var stream = new FileStream(nameOfFile, FileMode.Create);
+            await Foto.CopyToAsync(stream);
+
+            _context.Add(fotografias);
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+
             _context.Fotografias.Add(fotografias);
             await _context.SaveChangesAsync();
 
